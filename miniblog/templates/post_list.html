@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    {%for post in post_list %}
+        <a href="{% url 'post' pk=post.pk%}">
+            <h1>{{post.title}}</h1>
+        </a>
+        <img src="{{post.image.url}}" width="200" height="200">
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'default.html' %}
+{% block title %}
+{{post}}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ post.title }}</h1>
+    <h3>{{ post.date }}</h3>
+    <p>{{ post.content }}</p>
+    <img src="{{post.image.url}}">
+    {% if user.is_superuser %}
+        <br>
+        <a href="{% url 'delete' pk=post.pk%}">
+            <button class="delete-button">Delete</button>
+        </a>
+        <a href="{% url 'update' pk=post.pk%}">
+            <button class="update-button">Update</button>
+        </a>
+    {% endif %}
+
+{% endblock %}
